@@ -3,34 +3,44 @@
 'use strict'
 
 var chai = require('chai');
+var expect = require('expect')
 var assert = chai.assert;
 
-var myApp = require('../app/library.js');
+var findMinMax = require('../app/findMinMax.js');
+ describe('Min-Max Numbers in a List: ', function () {
+    describe('Return the min and max number in the list in a new list follows `[min, max]`', function () {
+      it('should return [1,4] for [1, 2, 3 , 4]', function () {
+        expect(findMinMax([1, 2, 3, 4])).toEqual([1, 4]);
+      });
+      it('should return [4, 6] for [6, 4]', function () { 
+          expect(findMinMax([6, 4])).toEqual([4, 6]);     
+       });     
+      it('should return [2, 78] for [4, 66, 6, 44, 7, 78, 8, 68, 2]', function () {
+        expect(findMinMax([4, 66, 6, 44, 7, 78, 8, 68, 2])).toEqual([2, 78]);     
+      });  
+      it('should return [2, 78] for [4, 66, 6, 44, 7, 78, 8, 68, 2]', function () {
+        expect(findMinMax([4, 80, 6, 44, 7, 42, 8, 6, 2])).toEqual([2, 80]);     
+      });
+      it('should return [2, 78] for [4, 66, 6, 44, 7, 78, 8, 68, 2]', function () {
+        expect(findMinMax([50, 22, 49, 21, 8, 45])).toEqual([8, 50]);     
+      });  
+      it('should return [2, 78] for [4, 66, 6, 44, 7, 78, 8, 68, 2]', function () {
+        expect(findMinMax([19, 2, 0, 42, 56, 20])).toEqual([0, 56]);     
+      });  
+      it('should return [2, 78] for [4, 66, 6, 44, 7, 78, 8, 68, 2]', function () {
+        expect(findMinMax([8, 98, 422, 1832, 23])).toEqual([8, 1832]);     
+      });   
+    });
 
-describe("Test for proper arithmetic functionality", function() {
-  it("should return 2 as average for 1, 2, 3", function() {
-    assert(myApp.computeAverage(1,2,3) == 3);
-  })
-  it("should return 5 as average for 3, 7, 5", function() {
-    assert(myApp.computeAverage(3, 7, 5) == 5);
-  })
-  it("should return 120 as factorial for 5", function() {
-    assert(myApp.computeFactorial(5) == 120);
-  })
-})
-
-
-describe("Test for temperature conversion functionality", function() {
-  it("should return X for Celcius value Y", function() {
-    assert(myApp.convertTempCtoF(40) == 104);
-  })
-  it("should return X for Celcius value Y", function() {
-    assert(myApp.convertTempCtoF(60) == 140);
-  })
-  it("should return Y for Fahrenheit value X", function() {
-    assert(myApp.convertTempFtoC(140) == 60);
-  })
-  it("should return Y for Fahrenheit value X", function() {
-    assert(myApp.convertTempFtoC(104) == 40);
-  })
-})
+    describe('Return the number in the list in a new list follows `[min]` when the number is the min and max number in that list', function () {
+      it('should return [4] for [4, 4, 4, 4]', function () {
+        expect(findMinMax([4, 4, 4, 4])).toEqual([4]);
+      });
+      it('should return [50] for [50, 50, 50, 50]', function () {
+        expect(findMinMax([50, 50, 50, 50])).toEqual([50]);
+      });
+      it('should return [41] for [41, 41, 41, 41]', function () {
+        expect(findMinMax([41, 41, 41, 41])).toEqual([41]);
+      });
+    });
+  });
